@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # 如果当前是linux系统
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -14,8 +14,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     # 2. 解压
     tar -zxvf frp_0.47.0_darwin_amd64.tar.gz
-# 修改权限
-chmod 777 ./frp_0.47.0_linux_amd64/frpc
+
 
 # 结束
 else
@@ -34,4 +33,7 @@ local_ip = 127.0.0.1
 local_port = $2
 remote_port = $2
 "
-echo "$config" > frp_0.47.0_linux_amd64/frps.ini
+echo "$config" > frp_0.47.0_linux_amd64/frpc.ini
+
+# 运行
+./frp_0.47.0_linux_amd64/frpc -c ./frp_0.47.0_linux_amd64/frpc.ini
